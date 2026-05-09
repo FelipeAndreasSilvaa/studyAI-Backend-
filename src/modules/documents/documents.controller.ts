@@ -39,13 +39,13 @@ export class DocumentsController {
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
-async delete(
-  @Req() req,
-  @Param('id') id: string,
-) {
-  return this.documentsService.deleteDocument(
-    req.user.id,
-    id,
-  );
-}
+  async delete(@Req() req, @Param('id') id: string) {
+    return this.documentsService.deleteDocument(req.user.id, id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  async findOne(@Req() req, @Param('id') id: string) {
+    return this.documentsService.findOne(req.user.id, id);
+  }
 }

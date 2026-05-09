@@ -6,12 +6,12 @@ import { PrismaController } from './prisma/prisma.controller';
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { DocumentsModule } from './modules/documents/documents.module';
-import { FlashcardModule } from './flashcard/flashcard.module';
 import { AuthModule } from './auth/auth.module';
 import { ChatModule } from './modules/chat/chat.module';
+import { SummariesModule } from './modules/summaries/summaries.module';
 
 @Module({
-  imports: [PrismaModule, UsersModule, DocumentsModule, FlashcardModule, ChatModule, AuthModule],
+  imports: [PrismaModule, UsersModule, DocumentsModule, ChatModule, AuthModule, SummariesModule],
   controllers: [AppController, PrismaController],
   providers: [AppService, PrismaService],
 })
