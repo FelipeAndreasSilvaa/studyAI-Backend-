@@ -48,4 +48,16 @@ export class DocumentsController {
   async findOne(@Req() req, @Param('id') id: string) {
     return this.documentsService.findOne(req.user.id, id);
   }
+  @UseGuards(JwtAuthGuard)
+
+  @Get(':id/flashcards')
+  async getFlashcards(
+    @Req() req,
+    @Param('id') id: string,
+  ) {
+    return this.documentsService.getFlashcards(
+      req.user.id,
+      id,
+    );
+  }
 }

@@ -142,6 +142,36 @@ export class DocumentsService {
     };
   }
 
+  async getFlashcards(
+    userId: string,
+    documentId: string,
+  ) {
+    // Verifica se o documento pertence ao usuário
+    const document =
+      await this.prisma.document.findFirst({
+        where: {
+          id: documentId,
+          userId,
+        },
+      });
+  
+    if (!document) {
+      throw new NotFoundException(
+        'Documento não encontrado',
+      );
+    }
+  
+    // Busca os flashcards do documento
+    return this.prisma.flashcard.findMany({
+      where: {
+        userId,
+        documentId,
+      },
+      orderBy: {
+        createdAt: 'asc',
+      },
+    });
+  }
 
   async findOne(
     userId: string,
