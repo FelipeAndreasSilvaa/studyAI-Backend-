@@ -10,9 +10,11 @@ import { AuthModule } from './auth/auth.module';
 import { ChatModule } from './modules/chat/chat.module';
 import { SummariesModule } from './modules/summaries/summaries.module';
 import { FlashcardsModule } from './modules/flashcards/flashcards.module';
+import { QuizzesModule } from './modules/quizzes/quizzes.module';
+import { RoadmapsModule } from './modules/roadmaps/roadmaps.module';
 
 @Module({
-  imports: [PrismaModule, UsersModule, DocumentsModule, ChatModule, AuthModule, SummariesModule, FlashcardsModule],
+  imports: [PrismaModule, UsersModule, DocumentsModule, ChatModule, AuthModule, SummariesModule, FlashcardsModule, QuizzesModule, RoadmapsModule],
   controllers: [AppController, PrismaController],
   providers: [AppService, PrismaService],
 })
