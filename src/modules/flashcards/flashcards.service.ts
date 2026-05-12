@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { AiService } from 'src/common/ai/services/ai.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Flashcard } from '@prisma/client';
+import { take } from 'rxjs';
 
 @Injectable()
 export class FlashcardsService {
@@ -18,7 +19,8 @@ export class FlashcardsService {
                 chunks: {
                     orderBy:{
                         index: 'asc'
-                    }
+                    },
+                    take: 10
                 }
             }
         })
